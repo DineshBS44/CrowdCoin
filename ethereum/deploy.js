@@ -1,11 +1,11 @@
 const HDWalletProvider = require("truffle-hdwallet-provider");
 const Web3 = require("web3");
 const compiledFactory = require('./build/CampaignFactory.json');
+require(dotenv).config();
+const mnemonic = process.env.MNEMONIC;
+const url = process.env.RINKEBY_RPC_URL;
 
-const provider = new HDWalletProvider(
-  "quick supreme cigar fall sight raw hire vote spring walnut cattle card",
-  "https://rinkeby.infura.io/v3/a3fc308803b7487abec63731e5647c33"
-);
+const provider = new HDWalletProvider(mnemonic, url);
 const web3 = new Web3(provider);
 
 const deploy = async () => {
