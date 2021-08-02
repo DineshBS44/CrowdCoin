@@ -8,13 +8,17 @@ Another interesting feature is that the contributor can retrieve a part of their
 
 ## Campaign contract
 
-<a href="https://rinkeby.etherscan.io/address/">Click here</a> to view the Campaign contract on etherscan
-
-The contract <a href="https://rinkeby.etherscan.io/address/">code</a> has been verified and it is visible on `rinkeby.etherscan.io`
+<a href="https://rinkeby.etherscan.io/address/0x54E4452931a94F376828b86Cd016bB1d26dB417B">Click here</a> to view the Campaign contract on etherscan
 
 ## The DApp User Interface
 
+![All Campaigns page](screenshots/home.jpg)
+
 ![Campaign page](screenshots/campaign.jpg)
+
+![Requests page](screenshots/requests.jpg)
+
+![Add request page](screenshots/add_request.jpg)
 
 ## Getting Started
 
