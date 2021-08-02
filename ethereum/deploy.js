@@ -1,7 +1,7 @@
-const HDWalletProvider = require("truffle-hdwallet-provider");
+const HDWalletProvider = require("@truffle/hdwallet-provider");
 const Web3 = require("web3");
 const compiledFactory = require('./build/CampaignFactory.json');
-require(dotenv).config();
+require('dotenv').config();
 const mnemonic = process.env.MNEMONIC;
 const url = process.env.RINKEBY_RPC_URL;
 
