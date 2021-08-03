@@ -14,18 +14,21 @@ let campaign;
 beforeEach(async () => {
 	accounts = await web3.eth.getAccounts();
 
-	factory = await new web3.eth.Contract(JSON.parse(compiledFactory.interface))
-		.deploy({ data: compiledFactory.bytecode })
-		.send({ from: accounts[0], gas: '1000000' });
+	factory = await new web3.eth.Contract(compiledFactory.abi)
+		.deploy({ 
+			data: '0x' + compiledFactory.evm.bytecode.object,
+			arguments: [3, 5]
+		})
+		.send({ from: accounts[0], gas: '2000000' });
 
 	await factory.methods.createCampaign('100').send({
 		from: accounts[0],
-		gas: '1000000'
+		gas: '2000000'
 	});
 
 	[campaignAddress] = await factory.methods.getDeployedCampaigns().call();
 	campaign = await new web3.eth.Contract(
-		JSON.parse(compiledCampaign.interface),
+		compiledCampaign.abi,
 		campaignAddress
 	);	
 
@@ -68,7 +71,7 @@ describe('Campaigns', () => {
 			.createRequest('Buy batteries', '100', accounts[1])
 			.send({
 				from: accounts[0],
-				gas: '1000000'
+				gas: '2000000'
 			});
 		const request = await campaign.methods.requests(0).call();
 
@@ -83,16 +86,16 @@ describe('Campaigns', () => {
 
 		await campaign.methods
 			.createRequest('A', web3.utils.toWei('5', 'ether'), accounts[1])
-			.send({ from: accounts[0], gas: '1000000' });
+			.send({ from: accounts[0], gas: '2000000' });
 
 		await campaign.methods.approveRequest(0).send({
 			from: accounts[0],
-			gas: '1000000'
+			gas: '2000000'
 		});
 
 		await campaign.methods.finalizeRequest(0).send({
 			from: accounts[0],
-			gas: '1000000'
+			gas: '2000000'
 		});
 
 		let balance = await web3.eth.getBalance(accounts[1]);
